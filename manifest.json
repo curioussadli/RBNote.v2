@@ -1,0 +1,9 @@
+{
+  "name": "RBL Note Printer",
+  "short_name": "RBLNote",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": []
+}

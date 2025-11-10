@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>RB Note</title>
+<link rel="manifest" href="manifest.json">
+<style>
+body { font-family: monospace; padding: 20px; }
+textarea { width: 100%; height: 200px; font-size: 18px; }
+button { padding: 10px; margin-top: 10px; font-size: 18px; width: 100%; }
+.footer { text-align:center; margin-top:20px; font-size:14px; opacity:0.7; }
+</style>
+</head>
+<body>
+<h2>📝 Catatan Pelanggan</h2>
+<textarea id="note"></textarea>
+<button onclick="printNow()">Print</button>
+<div class="footer" id="date"></div>
+
+<script>
+document.getElementById('date').innerText = new Date().toLocaleDateString();
+
+function printNow() {
+  let text = document.getElementById('note').value + "\n\n" + document.getElementById('date').innerText;
+  let url = "intent://print/#Intent;scheme=rawbt;package=ru.a402d.rawbtprinter;S.text=" + encodeURIComponent(text) + ";end";
+  location.href = url;
+}
+</script>
+
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('service-worker.js');
+}
+</script>
+</body>
+</html>
